@@ -69,82 +69,87 @@ export const viewport = {
   themeColor: "#171a29",
 }
 
-// Structured Data dla SEO
+// JEDEN obiekt Structured Data z @graph
 const structuredData = {
   "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "VOX Casino",
-  "url": "https://casino-vox-online.com/",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://casino-vox-online.com/?s={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
-}
-
-const casinoData = {
-  "@context": "https://schema.org",
-  "@type": "Casino",
-  "name": "VOX Casino",
-  "description": "Legalne kasyno online w Polsce z bonusami do 12 000 PLN i wypłatami BLIK",
-  "url": "https://casino-vox-online.com/",
-  "logo": "https://casino-vox-online.com/logo.png",
-  "sameAs": [
-    "https://facebook.com/voxcasino",
-    "https://twitter.com/voxcasino",
-    "https://instagram.com/voxcasino"
-  ],
-  "address": {
-    "@type": "PostalAddress",
-    "addressCountry": "PL"
-  },
-  "openingHours": "Mo-Su 00:00-24:00",
-  "paymentAccepted": ["BLIK", "Credit Card", "Przelewy24", "Cryptocurrency"],
-  "currenciesAccepted": ["PLN", "EUR"],
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.7",
-    "reviewCount": "1250",
-    "bestRating": "5",
-    "worstRating": "1"
-  }
-}
-
-const faqData = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "Jak znaleźć oficjalną stronę VOX Casino?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Wpisz w wyszukiwarkę 'VOX Casino online' lub skorzystaj z linków na naszych profilach społecznościowych. Pamiętaj, że nasze legalne kasyno zawsze działa pod bezpieczną domeną z certyfikatem SSL."
+      "@type": "WebSite",
+      "@id": "https://casino-vox-online.com/#website",
+      "url": "https://casino-vox-online.com/",
+      "name": "VOX Casino",
+      "description": "Legalne kasyno online w Polsce",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://casino-vox-online.com/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "inLanguage": "pl-PL"
+    },
+    {
+      "@type": "Casino",
+      "@id": "https://casino-vox-online.com/#casino",
+      "name": "VOX Casino",
+      "description": "Legalne kasyno online w Polsce z bonusami do 12 000 PLN i wypłatami BLIK",
+      "url": "https://casino-vox-online.com/",
+      "logo": "https://casino-vox-online.com/logo.png",
+      "sameAs": [
+        "https://facebook.com/voxcasino",
+        "https://twitter.com/voxcasino",
+        "https://instagram.com/voxcasino"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "PL"
+      },
+      "openingHours": "Mo-Su 00:00-24:00",
+      "paymentAccepted": ["BLIK", "Credit Card", "Przelewy24", "Cryptocurrency"],
+      "currenciesAccepted": ["PLN", "EUR"],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.7",
+        "reviewCount": "1250",
+        "bestRating": "5",
+        "worstRating": "1"
       }
     },
     {
-      "@type": "Question",
-      "name": "Czy oferujecie kasyno online BLIK?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Tak, BLIK to nasza specjalność. Możesz dokonywać wpłat natymiastowo za pomocą kodu BLIK, co jest najwygodniejszą metodą płatności w Polsce. Wpłaty są realizowane w czasie rzeczywistym bez żadnych opłat."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Czy VOX Casino jest legalne w Polsce?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Tak, jesteśmy legalnym kasynem online działającym na podstawie licencji Curacao eGaming. Twoje dane osobowe i środki finansowe są w pełni chronione dzięki szyfrowaniu SSL 256-bit."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Jak szybko VOX Casino wypłaca pieniądze?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Jesteśmy znani jako kasyno z szybkimi wypłatami. Wypłaty na portfele kryptowalutowe i e-wallety są realizowane w 10-30 minut po zatwierdzeniu. Przelewy bankowe zajmują standardowo 1-3 dni robocze."
-      }
+      "@type": "FAQPage",
+      "@id": "https://casino-vox-online.com/#faqpage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Jak znaleźć oficjalną stronę VOX Casino?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Wpisz w wyszukiwarkę 'VOX Casino online' lub skorzystaj z linków na naszych profilach społecznościowych. Pamiętaj, że nasze legalne kasyno zawsze działa pod bezpieczną domeną z certyfikatem SSL."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy oferujecie kasyno online BLIK?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tak, BLIK to nasza specjalność. Możesz dokonywać wpłat natymiastowo za pomocą kodu BLIK, co jest najwygodniejszą metodą płatności w Polsce. Wpłaty są realizowane w czasie rzeczywistym bez żadnych opłat."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy VOX Casino jest legalne w Polsce?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tak, jesteśmy legalnym kasynem online działającym na podstawie licencji Curacao eGaming. Twoje dane osobowe i środki finansowe są w pełni chronione dzięki szyfrowaniu SSL 256-bit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Jak szybko VOX Casino wypłaca pieniądze?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Jesteśmy znani jako kasyno z szybkimi wypłatami. Wypłaty na portfele kryptowalutowe i e-wallety są realizowane w 10-30 minut po zatwierdzeniu. Przelewy bankowe zajmują standardowo 1-3 dni robocze."
+          }
+        }
+      ]
     }
   ]
 }
@@ -175,18 +180,10 @@ export default function RootLayout({
           }}
         />
         
-        {/* Structured Data dla SEO */}
+        {/* JEDEN skrypt ze wszystkimi structured data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(casinoData) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqData) }}
         />
         
         {/* Podstawowe meta tagi SEO */}
