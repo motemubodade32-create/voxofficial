@@ -30,14 +30,37 @@ export const metadata: Metadata = {
       "Najlepsze kasyno online w Polsce. Bonusy do 12 000 PLN, szybkie wypłaty BLIK, ponad 5000 gier hazardowych.",
     type: "website",
     locale: "pl_PL",
+    url: "https://casino-vox-online.com/",
+    siteName: "VOX Casino",
+    images: [{
+      url: "/og-image.jpg",
+      width: 1200,
+      height: 630,
+      alt: "VOX Casino",
+    }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "VOX Casino Polska – Legalne Kasyno Online",
+    description: "Graj i wygrywaj w najlepszym kasynie online w Polsce",
+    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+    },
   },
   alternates: {
     canonical: "https://casino-vox-online.com/",
   },
+  verification: {
+    google: "google-site-verification-code",
+  },
+  category: "gambling",
 }
 
 export const viewport = {
@@ -46,8 +69,20 @@ export const viewport = {
   themeColor: "#171a29",
 }
 
-// Структурированные данные для SEO
+// Structured Data dla SEO
 const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "VOX Casino",
+  "url": "https://casino-vox-online.com/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://casino-vox-online.com/?s={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+
+const casinoData = {
   "@context": "https://schema.org",
   "@type": "Casino",
   "name": "VOX Casino",
@@ -75,6 +110,45 @@ const structuredData = {
   }
 }
 
+const faqData = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Jak znaleźć oficjalną stronę VOX Casino?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Wpisz w wyszukiwarkę 'VOX Casino online' lub skorzystaj z linków na naszych profilach społecznościowych. Pamiętaj, że nasze legalne kasyno zawsze działa pod bezpieczną domeną z certyfikatem SSL."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy oferujecie kasyno online BLIK?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak, BLIK to nasza specjalność. Możesz dokonywać wpłat natymiastowo za pomocą kodu BLIK, co jest najwygodniejszą metodą płatności w Polsce. Wpłaty są realizowane w czasie rzeczywistym bez żadnych opłat."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy VOX Casino jest legalne w Polsce?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak, jesteśmy legalnym kasynem online działającym na podstawie licencji Curacao eGaming. Twoje dane osobowe i środki finansowe są w pełni chronione dzięki szyfrowaniu SSL 256-bit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jak szybko VOX Casino wypłaca pieniądze?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Jesteśmy znani jako kasyno z szybkimi wypłatami. Wypłaty na portfele kryptowalutowe i e-wallety są realizowane w 10-30 minut po zatwierdzeniu. Przelewy bankowe zajmują standardowo 1-3 dni robocze."
+      }
+    }
+  ]
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -83,7 +157,7 @@ export default function RootLayout({
   return (
     <html lang="pl" className={`${inter.variable} ${montserrat.variable}`}>
       <head>
-        {/* Google Analytics скрипт */}
+        {/* Google Analytics */}
         <Script
           strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-F3Y8Z0BX2M"
@@ -101,23 +175,35 @@ export default function RootLayout({
           }}
         />
         
-        {/* Структурированные данные для SEO */}
+        {/* Structured Data dla SEO */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(casinoData) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqData) }}
+        />
         
-        {/* Дополнительные метатеги для казино */}
+        {/* Podstawowe meta tagi SEO */}
         <meta name="geo.region" content="PL" />
         <meta name="geo.placename" content="Polska" />
         <meta name="geo.position" content="52.229676;21.012229" />
         <meta name="ICBM" content="52.229676, 21.012229" />
         <meta name="language" content="pl" />
         <meta name="rating" content="Adult" />
-        <meta name="revisit-after" content="2 days" />
-        <meta name="distribution" content="global" />
         <meta name="copyright" content="VOX Casino" />
-        <meta name="mobile-web-app-capable" content="yes" />
+        
+        {/* Favicon */}
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        
+        {/* Canonical */}
+        <link rel="canonical" href="https://casino-vox-online.com/" />
       </head>
       <body className="font-sans antialiased">
         {children}
